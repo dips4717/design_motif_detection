@@ -1,0 +1,43 @@
+_BASE_: "Base-FSOD-C4.yaml"
+MODEL:
+  META_ARCHITECTURE: "FsodRCNN_Paisley"
+  WEIGHTS: "./output/fsod/R_50_C4_1x/model_final.pth" 
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  BACKBONE:
+    FREEZE_AT: 5 
+  ROI_HEADS:
+    CONTRASTIVE_BRANCH:
+      USE_SUPCONLOSS: False
+      TEMPERATURE: 0.2
+      LOSS_WEIGHT: 0.1
+      DECAY:
+        ENABLED: True
+        STEPS: [2000]
+        RATE: 0.5
+      IOU_THRESHOLD: 0.9
+DATASETS:
+  TRAIN: ("paisley_train",)
+  TEST: ("paisley_test",)
+SOLVER:
+  IMS_PER_BATCH: 8
+  BASE_LR: 0.001
+  STEPS: (2000, 3000)
+  MAX_ITER: 3001
+  WARMUP_ITERS: 200
+INPUT:
+  FS:
+    FEW_SHOT: True
+    SUPPORT_WAY: 1
+    SUPPORT_SHOT: 9
+  MIN_SIZE_TRAIN: (440, 472, 504, 536, 568, 600)
+  MAX_SIZE_TRAIN: 1000
+  MIN_SIZE_TEST: 600
+  MAX_SIZE_TEST: 1000
+  AUGMENTATIONS: 
+    TYPE: 'More'  # More/Default
+    APPLY_ON_SUPPORT: False
+    ROTATION_UPPER: 25 # Upper limit of the rotation, 0 means no rotation # rotation bring noisy bboxes
+  
+OUTPUT_DIR: './output/fsod/paisley_finetune_dir/R_50_C4_1x'

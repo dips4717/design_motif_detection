@@ -9,6 +9,8 @@ from matplotlib import pyplot as plt
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
 
+
+
 # import some common detectron2 utilities
 from detectron2 import model_zoo
 from detectron2.engine import DefaultPredictor
