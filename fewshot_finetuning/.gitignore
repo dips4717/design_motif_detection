@@ -5,3 +5,8 @@ output*/
 Predicted/
 verify_anns_test/
 verify_anns_train/
+predict_applelogo.py
+predict_all.py
+finetune.py
+
+

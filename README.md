@@ -21,4 +21,4 @@ This repo is tested with `pytorch 1.10.1+cu111` and `detecton2 v0.6`
 
 # Dataset and Annotations
 Download the dataset and annotation from [Drive](https://drive.google.com/drive/folders/1r_cQSwtUteatAN8jsBpvhQ8013XW5l_e?usp=sharing) and extract into an appropriate folder.
-
+You may need to point to this folder/update the dataset path in the dataloader/data preparation codes later. 
