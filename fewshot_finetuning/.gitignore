@@ -1,0 +1,7 @@
+__pycache__/
+Groudtruth_Plots/
+output/
+output*/
+Predicted/
+verify_anns_test/
+verify_anns_train/
