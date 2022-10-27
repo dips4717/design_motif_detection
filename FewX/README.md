@@ -1,16 +1,14 @@
-# Few-shot Object Detection based on [FewX](https://github.com/fanq15/FewX)
-This contains implementation of few-shot object detection adapted from on original FewX repo. 
-- For now, This repo only uses positive support branch
-- We implement the contrastive loss into the codebase see config files
+# Few-shot Object Detection based on [FewX Paper](https://github.com/fanq15/FewX)
+
+## Highlights
+- This contains implementation of few-shot object detection adapted from on original FewX repo. 
+- For now, this repo only uses positive support branch
+- We add implemention for contrastive learning on proposals the codebase.
 - We experiment with different sets of data augmentations
 
 
 ## Dataset
-- Download 
-- Dataset splits
-  - train 10 images
-  - test 10 images
-  - test_v2 images [Excludes a image with lots of small bboxes.]
+Follow the instruction [here](../README.md) for dataset and annotation download.
 
 ## Data Preparation
 - **Generate dataset dictionaries**
@@ -45,6 +43,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train_debug_paisley.py --num-gpus 4 \
 The training can be kicked-off with above command based on the config file. 
 See `configs/fsod/finetune_R_50_C4_1x_paisley.yaml` for configurations
 The config parameters can be modified in command-line as above.
+
 
 **Evaluate**
 ```
@@ -88,21 +87,26 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train_debug_paisley.py --num-gpus 4 \
 To visualize/plot the detection results on images, simply run `predict.py` with necessary arguments for model_path and config.
 
 
+# Implementation Notes
+
+- Most of the data/model implementations are in `fewx/`
+- See `fewx/modeling/fsod/fsod_rcnn_paisley.py` for model architecture implementation.
+- ROI heads and contrastive learning is implemented in `fewx/modeling/fsod/fsox_rnn_paisley.py`
+- Refer to the [progress slide](https://www.dropbox.com/s/v8zkpqlto9k86uw/PatternSearch.pptx?dl=0) for performances.
+
+
 ## Augmentations
-Currently, only augmentations in detectron2 is used.
-- `Default` and `More` data augmentation configs
+Currently, only augmentations available in detectron2 are supported
+- `Default` and `More` data augmentation config options
 - `ROTATION_UPPER` for upper bound of random rotation, 0 means no rotation augmentation
-- You can play with more config parameters, see config files, add new config parameters, 
-See `fewx/data/dataset_mapper_paisley.py` for actual implementation
+- You can play with more config parameters, see config files, add new config parameters, see `fewx/data/dataset_mapper_paisley.py` for actual implementations
+
 TODO:
   - To integrate libraries like Albumentations into detectron2 or writing up the custom augmentation in detectron2 would be need.
 
 ## Note: To add more config parameters.
 - Add the parameters you want to add into `fewx/config/defaults.py` first.
 - This can be then reffered in config.yaml files and also given as command-line args.
-
-
-## Implementation Notes
 
 ## Acknowlegement
 [Detectron2](https://github.com/facebookresearch/detectron2)
