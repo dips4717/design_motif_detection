@@ -103,6 +103,8 @@ Currently, only augmentations available in detectron2 are supported
 
 TODO:
   - To integrate libraries like Albumentations into detectron2 or writing up the custom augmentation in detectron2 would be need.
+  - Use image crops from random images (may be from other collections) as negative proposals. This could also work as negative support branch as in the original paper.
+  
 
 ## Note: To add more config parameters.
 - Add the parameters you want to add into `fewx/config/defaults.py` first.
