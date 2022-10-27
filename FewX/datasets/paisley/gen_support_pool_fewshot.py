@@ -248,13 +248,11 @@ def main():
     dataDir = '.'
 
     root_path = '/home/dipu/deepdiscover/codes/detection/FewX/datasets/paisley'
-    #root_path = sys.argv[1]
     support_path = os.path.join(root_path, '10image_shot_support')
-    #support_path = '10_shot_support'
+    
     if not isdir(support_path): 
         mkdir(support_path)
-    #else:
-    #    shutil.rmtree(support_path)
+
 
     support_dict = {}
     

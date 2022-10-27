@@ -7,7 +7,7 @@ import cv2
 
 
 def get_paisley_dicts(img_dir= f'/home/dipu/deepdiscover/images/Paisley/', split='train'):
-    txtfile = f'/home/dipu/deepdiscover/codes/detection/fewshot_finetuning/Paisley_{split}.txt'
+    txtfile = f'../../../fewshot_finetuning/Paisley_{split}.txt'
     imfns = open(txtfile, 'r').readlines()
     imfns = [x.strip() for x in imfns ]
     
@@ -52,9 +52,11 @@ def get_paisley_dicts(img_dir= f'/home/dipu/deepdiscover/images/Paisley/', split
 
 if __name__ == "__main__":
     basepath = '/home/dipu/deepdiscover'
-    split = 'test_v2' # train/test/test_v2
-    dataset_dict = get_paisley_dicts(split=split)
-    print('Number of images in the dataset: ', len(dataset_dict))
-    # Save this to reduce overhead during training/test
-    with open(f'paisley_{split}_dicts', 'wb') as f:
-        pickle.dump(dataset_dict, f)
+    for split in ['train', 'test', 'test_v2']:
+        #split = 'test_v2' # train/test/test_v2
+        dataset_dict = get_paisley_dicts(split=split)
+        print('Number of images in the dataset: ', len(dataset_dict))
+        
+        # Save this to reduce overhead during training/test
+        # with open(f'paisley_{split}_dicts.pkl', 'wb') as f:
+        #     pickle.dump(dataset_dict, f)

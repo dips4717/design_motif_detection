@@ -165,9 +165,9 @@ if __name__ == "__main__":
     args.num_gpus = 1
     #print(vars(args))
     
-    args.model_path = './output/fsod/paisley_finetune_dir/R_50_C4_1x_freezeat2'
+    args.model_path = './output/fsod/paisley_finetune_dir/R_50_C4_1x_Supcon_wt0.1_freeze2_iou0.9_aug_SA0_R0'
     
-    args.config_file  = 'configs/fsod/finetune_R_50_C4_1x_paisley.yaml'
+    args.config_file  = f'{args.model_path}/config.yaml'
     args.opts = ['MODEL.WEIGHTS', f'{args.model_path}/model_final.pth']
     args.eval_only = True
     
