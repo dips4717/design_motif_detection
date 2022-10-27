@@ -42,8 +42,9 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train_debug_paisley.py --num-gpus 4 \
     OUTPUT_DIR ./output/fsod/paisley_finetune_dir/R_50_C4_1x_Supcon_wt0.1_freeze2_iou0.9_aug_SA0_R25 2>&1 | tee log/paisely_fsod_finetune_train_log_Supcon_wt0.1_freeze2_iou0.9_aug_SA0_R25.txt
 ```
 
-The training can be carried out using above code based on the config file. See `configs/fsod/finetune_R_50_C4_1x_paisley.yaml` for 
-The config parameter can be changed in command-line as above.
+The training can be kicked-off with above command based on the config file. 
+See `configs/fsod/finetune_R_50_C4_1x_paisley.yaml` for configurations
+The config parameters can be modified in command-line as above.
 
 **Evaluate**
 ```
@@ -64,9 +65,9 @@ To evaluate, run the commands above pointing the config file and saved model (ou
 Delete the support features first if this exists
 The evaluation command is run twice, the first run will compute the support features and the second run will actually compute the metrics.
 
-** Evaluation on test set v2 **
+**Evaluation on test set v2**
 To run evaluation on test_v2, just change the test set argument as below.
-
+```
 rm -rf support_dir/support_feature_paisley.pkl
 
 CUDA_VISIBLE_DEVICES=0,1,2,3 python3 train_debug_paisley.py --num-gpus 4 \
