@@ -21,7 +21,7 @@ You will also need to install appropriate pytorch and torchvision versions.
 This repo is tested with `pytorch 1.10.1+cu111` and `detecton2 v0.6`
 
 ## Dataset and Annotations
-Download the dataset and annotation from [Drive](https://drive.google.com/drive/folders/1r_cQSwtUteatAN8jsBpvhQ8013XW5l_e?usp=sharing) and extract into an appropriate folder.
+Download the dataset and annotation.
 You may need to point to this folder/update the dataset path in the dataloader/data preparation codes later. 
 - Dataset splits. 
   - train 10 images: `fewshot_finetuning/Paisley_train.txt`
@@ -29,4 +29,4 @@ You may need to point to this folder/update the dataset path in the dataloader/d
   - test_v2 images [Excludes a image with lots of small bboxes.] :  `fewshot_finetuning/Paisley_test_v2.txt`
 
 ## Slide
-Progress slide available [here](https://www.dropbox.com/s/v8zkpqlto9k86uw/PatternSearch.pptx?dl=0)
+Progress slide available.
