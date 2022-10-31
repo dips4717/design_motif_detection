@@ -28,5 +28,3 @@ You may need to point to this folder/update the dataset path in the dataloader/d
   - test 10 images:  `fewshot_finetuning/Paisley_test.txt`
   - test_v2 images [Excludes a image with lots of small bboxes.] :  `fewshot_finetuning/Paisley_test_v2.txt`
 
-## Slide
-Progress slide available.
